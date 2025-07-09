@@ -1,30 +1,30 @@
 <div>
-    <!-- INICIO Modal crear posto -->
+    <!-- INICIO Modal crear post -->
     <livewire:post-crear />
-    <!-- FIN Modal crear posto -->
+    <!-- FIN Modal crear post -->
     
     
     <div
-    class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-    <table class="w-full text-left table-auto min-w-max">
-        <thead>
+    class="overflow-x-auto">
+    <table class="w-full text-left text-xs rtl:text-right">
+        <thead class="text-xs uppercase">
         <tr>
-            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <th scope="col" class="px-6 py-3">
             <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                TIRULO
+                TITULO
             </p>
             </th>
-            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <th scope="col" class="px-6 py-3">
             <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                 BODY
             </p>
             </th>
-            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <th scope="col" class="px-6 py-3">
             <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                Employed
+                IMAGEN
             </p>
             </th>
-            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <th scope="col" class="px-6 py-3">
             <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                 ACCIÓN
             </p>
@@ -32,31 +32,38 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="p-4 border-b border-blue-gray-50">
-            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                John Michael
-            </p>
-            </td>
-            <td class="p-4 border-b border-blue-gray-50">
-            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                Manager
-            </p>
-            </td>
-            <td class="p-4 border-b border-blue-gray-50">
-            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                23/04/18
-            </p>
-            </td>
-            <td class="p-4 border-b border-blue-gray-50">
-            <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                Edit
-            </a>
-            </td>
-        </tr>
+        @foreach ($posts as $post)        
+            <tr wire:key="{{ $post->id }}"" class="odd:bg-white even:bg-gray-50 border-b border-gray-200">
+                <td class="px-6 py-2 font-medium">
+                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                    {{ $post->title }}
+                </p>
+                </td>
+                <td class="p-4 border-b border-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                    {{ $post->body }}
+                </p>
+                </td>
+                <td class="p-4 border-b border-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                    {{ $post->image ? $post->image : 'No image' }}
+                </p>
+                </td>
+                <td class="px-6 py-2 space-x-1">
+                    <button 
+                    >Eliminar 
+                </button>
+                <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                    Editar                    
+                </a>
+                </td>
+            </tr>
+        @endforeach
         
         </tbody>
     </table>
     </div>
+
+    {{ $posts->links() }}
                           
 </div>
