@@ -4,4 +4,7 @@
         <flux:subheading size="lg" class="mb-6">{{ __('Manejo de Posts') }}</flux:subheading>
         <flux:separator variant="subtle" />
     </div>
+
+    <livewire:listar-post />
+    
 </x-layouts.app>
