@@ -1,30 +1,8 @@
 <div>
-
-
-    <!-- Modal crear posto -->
-    <flux:modal.trigger name="crer-post-modal">
-        <flux:button>Crear Post</flux:button>
-    </flux:modal.trigger>
-
-    <flux:modal name="crer-post-modal" class="md:w-96">
-        <div class="space-y-6">
-            <div>
-                <flux:heading size="lg">Crear Post</flux:heading>
-                <flux:text class="mt-2">Make changes to your personal details.</flux:text>
-            </div>
-
-            <flux:input label="Name" placeholder="Your name" />
-
-            <flux:input label="Date of birth" type="date" />
-
-            <div class="flex">
-                <flux:spacer />
-
-                <flux:button type="submit" variant="primary">Save changes</flux:button>
-            </div>
-        </div>
-    </flux:modal>
-    <!-- fin Modal crear posto -->
+    <!-- INICIO Modal crear posto -->
+    <livewire:post-crear />
+    <!-- FIN Modal crear posto -->
+    
     
     <div
     class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
