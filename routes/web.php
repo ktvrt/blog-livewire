@@ -11,6 +11,11 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+// Definimos la ruta para la pagina posts
+Route::view('posts', 'posts')
+    ->middleware(['auth', 'verified'])
+    ->name('posts');
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
