@@ -1,7 +1,12 @@
 <div>
-    <!-- INICIO Modal crear post -->
-    <livewire:post-crear />
-    <!-- FIN Modal crear post -->
+    <div class="flex flex-col items-center p-2 md:flex-row md:gap-8">
+        <!-- INICIO Modal crear post -->
+        <livewire:post-crear />
+        <!-- FIN Modal crear post -->
+        <flux:input wire:model.live.debounce.300ms='buscador' 
+        class="mb-1" icon="magnifying-glass" placeholder="Buscar Post..."/>
+    </div>
+     <h2>buscar: {{ $buscador }}</h2>  
     
     
     <div
@@ -10,52 +15,48 @@
         <thead class="text-xs uppercase">
         <tr>
             <th scope="col" class="px-6 py-3">
-            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+            <p class="block text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                 TITULO
             </p>
             </th>
             <th scope="col" class="px-6 py-3">
-            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+            <p class="block text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                 BODY
             </p>
             </th>
             <th scope="col" class="px-6 py-3">
-            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+            <p class="block text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                 IMAGEN
             </p>
             </th>
             <th scope="col" class="px-6 py-3">
-            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+            <p class="block text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                 ACCIÓN
             </p>
             </th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="text-sm font-normal text-blue-gray-700">
         @foreach ($posts as $post)        
-            <tr wire:key="{{ $post->id }}"" class="odd:bg-white even:bg-gray-50 border-b border-gray-200">
+            <tr wire:key="{{ $post->id }}" class="border-b border-blue-gray-50">
                 <td class="px-6 py-2 font-medium">
-                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                <p class="block text-sm antialiased font-normal leading-normal ">
                     {{ $post->title }}
                 </p>
                 </td>
                 <td class="p-4 border-b border-blue-gray-50">
-                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                <p class="block text-sm antialiased font-normal leading-normal ">
                     {{ $post->body }}
                 </p>
                 </td>
                 <td class="p-4 border-b border-blue-gray-50">
-                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                <p class="block text-sm antialiased font-normal leading-normal ">
                     {{ $post->image ? $post->image : 'No image' }}
                 </p>
                 </td>
-                <td class="px-6 py-2 space-x-1">
-                    <button 
-                    >Eliminar 
-                </button>
-                <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                    Editar                    
-                </a>
+                <td class="px-3 py-2">
+                    <flux:button variant="primary" color="amber" size="sm">Editar</flux:button>
+                    <flux:button variant="primary" color="red" size="sm">Eliminar</flux:button>
                 </td>
             </tr>
         @endforeach

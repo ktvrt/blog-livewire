@@ -1,8 +1,9 @@
 <div>
     <!-- Modal crear posto -->
-    <flux:modal.trigger name="crer-post-modal">
-        <flux:button>Crear Post</flux:button>
-    </flux:modal.trigger>
+    
+        <flux:modal.trigger name="crer-post-modal">
+        <flux:button variant="primary" color="green" class="mb-2">Crear Post</flux:button>
+        </flux:modal.trigger>
 
     <flux:modal name="crer-post-modal" class="md:w-200">
         <div class="space-y-6">
@@ -12,7 +13,7 @@
             </div>
 
             <flux:input label="title" wire:model='title' placeholder="Titulo del Post" />
-            <flux:input label="imagen" wire:model='imagen' placeholder="Imagen del Post" />
+            <flux:input label="imagen" wire:model='imagen' type="file" placeholder="Imagen del Post" />
 
             <flux:textarea label="Body" wire:model='body' type="Body del Post" />
 
