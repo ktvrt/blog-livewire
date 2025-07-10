@@ -14,6 +14,30 @@
     <!-- INICIO Modal editar post -->
     <livewire:edit-post />
     <!-- FIN Modal editar post -->
+    <!-- INICIO Modal eliminar post -->
+    <flux:modal name="eliminar-post-modal" class="min-w-[22rem]">
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">Eliminar Post?</flux:heading>
+
+                <flux:text class="mt-2">
+                    <p>You're about to eliminar este post.</p>
+                    <p>This action cannot be reversed.</p>
+                </flux:text>
+            </div>
+
+            <div class="flex gap-2">
+                <flux:spacer />
+
+                <flux:modal.close>
+                    <flux:button variant="ghost">Cancel</flux:button>
+                </flux:modal.close>
+
+                <flux:button wire:click='destruir' type="submit" variant="danger">Eliminar post</flux:button>
+            </div>
+        </div>
+    </flux:modal>
+    <!-- FIN Modal eliminar post -->
 
      <h2>buscar: {{ $buscador }}</h2>  
     
@@ -64,8 +88,10 @@
                 </p>
                 </td>
                 <td class="px-3 py-2">
-                    <flux:button wire:click='editar({{ $post->id }})' variant="primary" color="amber" size="sm">Editar</flux:button>
-                    <flux:button variant="primary" color="red" size="sm">Eliminar</flux:button>
+                    <flux:button 
+                        wire:click='editar({{ $post->id }})' variant="primary" color="amber" size="sm">Editar</flux:button>
+                    <flux:button 
+                        wire:click='eliminar({{ $post->id }})' variant="primary" color="red" size="sm">Eliminar</flux:button>
                 </td>
             </tr>
         @endforeach
