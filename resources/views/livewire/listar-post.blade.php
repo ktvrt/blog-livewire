@@ -1,11 +1,20 @@
 <div>
     <div class="flex flex-col items-center p-2 md:flex-row md:gap-8">
-        <!-- INICIO Modal crear post -->
-        <livewire:post-crear />
-        <!-- FIN Modal crear post -->
+        <flux:modal.trigger name="crer-post-modal">
+        <flux:button variant="primary" color="green" class="mb-2">Crear Post</flux:button>
+        </flux:modal.trigger>
+        
         <flux:input wire:model.live.debounce.300ms='buscador' 
         class="mb-1" icon="magnifying-glass" placeholder="Buscar Post..."/>
     </div>
+
+    <!-- INICIO Modal crear post -->
+    <livewire:post-crear />
+    <!-- FIN Modal crear post -->
+    <!-- INICIO Modal editar post -->
+    <livewire:edit-post />
+    <!-- FIN Modal editar post -->
+
      <h2>buscar: {{ $buscador }}</h2>  
     
     
@@ -55,7 +64,7 @@
                 </p>
                 </td>
                 <td class="px-3 py-2">
-                    <flux:button variant="primary" color="amber" size="sm">Editar</flux:button>
+                    <flux:button wire:click='editar({{ $post->id }})' variant="primary" color="amber" size="sm">Editar</flux:button>
                     <flux:button variant="primary" color="red" size="sm">Eliminar</flux:button>
                 </td>
             </tr>

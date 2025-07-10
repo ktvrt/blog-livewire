@@ -1,9 +1,9 @@
 <div>
-    <!-- Modal crear posto -->    
-    <flux:modal name="crer-post-modal" class="md:w-200">
+    <!-- Modal editar posto -->    
+    <flux:modal name="editar-post-modal" class="md:w-200">
         <div class="space-y-6">
             <div>
-                <flux:heading size="lg">Crear Post</flux:heading>
+                <flux:heading size="lg">Editar Post</flux:heading>
                 <flux:text class="mt-2">Ingresar los datos del Post.</flux:text>
             </div>
 
@@ -15,9 +15,9 @@
             <div class="flex">
                 <flux:spacer />
 
-                <flux:button type="submit" variant="primary" wire:click='submit'>Guardar</flux:button>
+                <flux:button type="submit" variant="primary" wire:click='actualizar'>Actualizar</flux:button>
             </div>
         </div>
     </flux:modal>
-    <!-- fin Modal crear posto -->
+    <!-- fin Modal editar posto -->
 </div>

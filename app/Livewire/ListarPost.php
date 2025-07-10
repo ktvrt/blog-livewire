@@ -29,4 +29,15 @@ class ListarPost extends Component
                     ->orWhere("body","LIKE", "%{$this->buscador}%")->paginate(5)  
         ]);
     }
+
+    public function editar(Post $post)
+    {
+        //dd('Editando post: ' . $post->id . ' - ' . $post->title);
+
+        // enviamos el post al componente EditPost
+        //hacemos uso de la funcionalidad de Flux para enviar un evento
+        // que será escuchado por el componente EditPost
+        // y así poder editar el post seleccionado        
+        $this->dispatch('editarPost', $post);
+    }
 }
