@@ -16,17 +16,37 @@ class PostCrear extends Component
     public $title;
     #[Rule("string|required|min:3|max:255")]
     public $body;
-    #[Rule("nullable|image|max:1024")] // Max 1MB   
+    //#[Rule("nullable|image|max:1024")] // Max 1MB   
     public $imagen;
 
     public function submit(){
 
         $this->validate();
-        Post::create([
+        //vamos a guarla imagen en la variable $imagen
+        // si no hay imagen, se guarda null
+        // si hay imagen, se guarda la ruta de la imagen
+        // el método store() devuelve la ruta de la imagen almacenada
+        // en el disco 'public' en la carpeta 'posts'
+        // si no hay imagen, se guarda null
+        // si hay imagen, se guarda la ruta de la imagen
+        // se almacena la imagen en el disco 'public' en la carpeta 'posts'
+        // y se guarda la ruta en la base de datos
+        // si no hay imagen, se guarda null
+        // si hay imagen, se guarda la ruta de la imagen
+        // el método store() devuelve la ruta de la imagen almacenada
+        // en el disco 'public' en la carpeta 'posts'
+        // si no hay imagen, se guarda null
+        
+        $post = Post::create([
             'title' => $this->title,
-            'body' => $this->body,
-            'image' => $this->imagen ? $this->imagen->store('posts', 'public') : null
+            'body' => $this->body
         ]);
+
+        if($this->imagen) {
+            // Si se ha subido una imagen, la guardamos en el modelo
+            $post->imagen = $this->imagen->store('posts', 'public');
+            $post->save();
+        }
 
         //session()->flash('message', 'Post creado correctamente.');
         

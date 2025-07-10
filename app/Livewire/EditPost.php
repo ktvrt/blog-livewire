@@ -7,9 +7,12 @@ use App\Models\Post;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\On;
+use Livewire\WithFileUploads;
 
 class EditPost extends Component
 {
+    use WithFileUploads;
+    
     public $id;
     #[Rule("string|required|min:3|max:50")]
     public $title;

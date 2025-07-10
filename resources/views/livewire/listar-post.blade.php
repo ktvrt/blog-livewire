@@ -84,6 +84,12 @@
                 </td>
                 <td class="p-4 border-b border-blue-gray-50">
                 <p class="block text-sm antialiased font-normal leading-normal ">
+                    @if ($post->imagen)
+                    {{ dd($post->imagen) }}
+                        <img src="{{ asset($post->imagen) }}" class="w-12 h-12 rounded-2xl" >
+                        <img src="{{ $post->imagen->temporaryUrl }}" class="w-12 h-12 rounded-2xl" >
+                        
+                    @endif
                     {{ $post->image ? $post->image : 'No image' }}
                 </p>
                 </td>
