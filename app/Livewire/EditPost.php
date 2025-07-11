@@ -21,7 +21,7 @@ class EditPost extends Component
     #[Rule("nullable|image|max:1024")] // Max 1MB   
     public $imagen;
 
-    public $imagenForm;
+    public $imagenPost;
 
     public function render()
     {
@@ -40,7 +40,7 @@ class EditPost extends Component
         $this->title = $post->title;
         $this->body = $post->body;
 
-        $this->imagenForm = $post->imagen; // Asignar la imagen actual al campo de imagen del formulario
+        $this->imagenPost = $post->imagen; // Asignar la imagen actual al campo de imagen del formulario
         // Si quieres mostrar la imagen actual en el formulario, puedes usar:
         
 
@@ -60,7 +60,7 @@ class EditPost extends Component
             $post->imagen = $this->imagen->store('posts');
         }
 
-        $post->save();
+        $post->update();
 
         // Reset the form fields
         $this->reset(['id', 'title', 'body', 'imagen']);

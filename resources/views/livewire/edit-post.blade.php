@@ -13,7 +13,7 @@
             
             
             <div class="flex gap-2">
-                <img src="{{ asset(Storage::url($imagenForm)) }}" @class([
+                <img src="{{ asset(Storage::url($imagenPost)) }}" @class([
                     "w-12 h-12 rounded-2xl",
                     "opacity-30" => $imagen,
                 ]) >
