@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Post;
 use Flux;
+use Illuminate\Support\Facades\Storage;
 
 class ListarPost extends Component
 {
@@ -62,6 +63,11 @@ class ListarPost extends Component
             $post->delete();
             // mostramos un mensaje de éxito
             session()->flash('message', 'Post eliminado correctamente.');
+            //eliminar la imagen del disco
+            if ($post->imagen) {
+                Storage::delete($post->imagen);
+                //Storage::disk('public')->delete($post->imagen);
+            }
         } else {
             session()->flash('error', 'Post no encontrado.');
         }

@@ -21,6 +21,8 @@ class EditPost extends Component
     #[Rule("nullable|image|max:1024")] // Max 1MB   
     public $imagen;
 
+    public $imagenForm;
+
     public function render()
     {
         return view('livewire.edit-post');
@@ -37,7 +39,10 @@ class EditPost extends Component
         $this->id = $post->id;
         $this->title = $post->title;
         $this->body = $post->body;
-        $this->image = $post->image;
+
+        $this->imagenForm = $post->imagen; // Asignar la imagen actual al campo de imagen del formulario
+        // Si quieres mostrar la imagen actual en el formulario, puedes usar:
+        
 
         // Abrir el modal de edición
         // Aquí usamos Flux para mostrar el modal
@@ -52,7 +57,7 @@ class EditPost extends Component
         $post->title = $this->title;
         $post->body = $this->body;
         if ($this->imagen) {
-            $post->image = $this->imagen->store('posts', 'public');
+            $post->imagen = $this->imagen->store('posts');
         }
 
         $post->save();

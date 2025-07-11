@@ -44,9 +44,11 @@ class PostCrear extends Component
 
         if($this->imagen) {
             // Si se ha subido una imagen, la guardamos en el modelo
-            $post->imagen = $this->imagen->store('posts', 'public');
-            $post->save();
+            //$post->imagen = $this->imagen->storeAs(path: 'posts', name: 'avatar');
+            $post->imagen = $this->imagen->store(path: 'posts');
         }
+
+        $post->save();
 
         //session()->flash('message', 'Post creado correctamente.');
         
@@ -60,6 +62,7 @@ class PostCrear extends Component
 
     public function render()
     {
+        
         return view('livewire.post-crear');
     }
 }

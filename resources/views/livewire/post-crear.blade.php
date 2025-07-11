@@ -8,6 +8,7 @@
             </div>
 
             <flux:input label="title" wire:model='title' placeholder="Titulo del Post" />
+            
             <flux:input label="imagen" wire:model='imagen' type="file" placeholder="Imagen del Post" />
             <div>
                 @if ($imagen) 
