@@ -18,7 +18,7 @@ class EditPost extends Component
     public $title;
     #[Rule("string|required|min:3|max:255")]
     public $body;
-    #[Rule("nullable|image|max:1024")] // Max 1MB   
+    #[Rule("nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024")] // Max 1MB   
     public $imagen;
 
     public $imagenPost;
