@@ -108,10 +108,11 @@
                     @if ($post->imagen)
                     
                         <!--img src="{{ asset(config('filesystems.RUTA_IMAGENES').$post->imagen) }}" class="w-12 h-12 rounded-2xl" -->                        
-                        <img src="{{ asset(Storage::url($post->imagen)) }}" class="w-12 h-12 rounded-2xl" >
+                        <img src="{{ asset($post->getImagen($post->imagen)) }}" class="w-12 h-12 rounded-2xl">
                         
                     @else
                         <span class="text-red-500">Sin imagen</span>
+                        <img src="{{ asset($post->getImagen($post->imagen)) }}" class="w-12 h-12 rounded-2xl">
                     @endif
 
 
