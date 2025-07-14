@@ -9,7 +9,7 @@
 
             <flux:input label="title" wire:model='title' placeholder="Titulo del Post" />
             
-            <flux:input label="imagen" wire:model='imagen' type="file" placeholder="Imagen del Post" />
+            <flux:input label="imagen" wire:model='imagen' accept="image/*" type="file" placeholder="Imagen del Post" />
             <div>
                 @if ($imagen) 
                     <img src="{{ $imagen->temporaryUrl() }}" class="w-12 h-12 rounded-2xl" >
