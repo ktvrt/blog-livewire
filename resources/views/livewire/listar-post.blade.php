@@ -1,25 +1,4 @@
 <div>
-
-    <div x-data
-        x-init="@this.on('updated', event => {
-            var element = document.getElementById('liveToast');
-            setTimeout(function() {
-                const myToast = new bootstrap.Toast(element);
-                console.log('updated');
-                myToast.show();
-            }, 100);
-        })">
-        <div class="toast-container position-fixed top-0 end-0 p-3">
-            <div class="toast bg-secondary" id="liveToast" data-bs-autohide="false">
-                <div class="toast-body text-white d-flex justify-content-between">
-                    <span>Hello, world! This is a toast message.</span>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="flex flex-col items-center p-2 md:flex-row md:gap-8">
         <flux:modal.trigger name="crer-post-modal">
         <flux:button variant="primary" color="green" class="mb-2">Crear Post</flux:button>
