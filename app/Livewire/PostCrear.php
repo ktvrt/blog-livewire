@@ -7,6 +7,8 @@ use Livewire\Attributes\Rule;
 use App\Models\Post;
 use Livewire\WithFileUploads;
 use Flux;
+use Masmerise\Toaster\Toaster;
+use Illuminate\Support\Facades\Redirect;
 
 class PostCrear extends Component
 {
@@ -49,15 +51,19 @@ class PostCrear extends Component
         }
 
         $post->save();
-
-        //session()->flash('message', 'Post creado correctamente.');
         
         // Reset the form fields
         $this->reset(['title', 'body', 'imagen']);
 
         Flux::modal('crer-post-modal')->close();
-        //$this->resetPage();
-         $this->redirect("/posts",navigate: true);
+        
+        //TOASTER FORMA 1
+        //Toaster::success('Post creado!');
+        //$this->redirect("/posts",navigate: true);
+         
+        //TOASTER FORMA 2
+        return Redirect::route('posts')->info('Company created!');
+
     }
 
     public function render()

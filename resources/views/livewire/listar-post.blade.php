@@ -1,4 +1,21 @@
 <div>
+    <div>
+        <flux:button @click="Toaster.success('Form submitted!')">
+            success
+        </flux:button>
+        <flux:button @click="Toaster.warning('Form warning!')">
+            warning
+        </flux:button>
+        <flux:button @click="Toaster.info('Form info!')">
+            info
+        </flux:button>
+        
+        <flux:button @click="Toaster.error('Form error!')">
+            error
+        </flux:button>
+    </div>
+
+
     <div class="flex flex-col items-center p-2 md:flex-row md:gap-8">
         <flux:modal.trigger name="crer-post-modal">
         <flux:button variant="primary" color="green" class="mb-2">Crear Post</flux:button>
